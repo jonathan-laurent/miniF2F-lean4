@@ -6,8 +6,6 @@ Authors: Kunhao Zheng, Stanislas Polu, David Renshaw, OpenAI GPT-f
 ! This file was ported from Lean 3 source module valid and edited by Kaiyu Yang.
 -/
 import MiniF2F.Minif2fImport
-open BigOperators Real Nat Topology
-
 
 theorem mathd_algebra_478
   (b h v : ℝ)
@@ -26,7 +24,7 @@ theorem aime_1983_p1 (x y z w : ℕ) (ht : 1 < x ∧ 1 < y ∧ 1 < z) (hw : 0 �
     (h2 : Real.log w / Real.log (x * y * z) = 12) : Real.log w / Real.log z = 60 := by sorry
 
 theorem amc12_2001_p5 :
-  Finset.prod (Finset.filter (λ x => ¬ Even x) (Finset.range 10000)) (id : ℕ → ℕ) = (10000!) / ((2^5000) * (5000!)) := by sorry
+  Finset.prod (Finset.filter (λ x => ¬ Even x) (Finset.range 10000)) (id : ℕ → ℕ) = (Nat.factorial 10000) / ((2^5000) * (Nat.factorial 5000)) := by sorry
 
 theorem mathd_algebra_141
   (a b : ℝ)
@@ -223,7 +221,7 @@ theorem mathd_algebra_176
 theorem induction_nfactltnexpnm1ngt3
   (n : ℕ)
   (h₀ : 3 ≤ n) :
-  (n)! < n^(n - 1) := by sorry
+  (Nat.factorial n) < n^(n - 1) := by sorry
 
 theorem mathd_algebra_208 :
   Real.sqrt 1000000 - 1000000^(1/3) = 900 := by sorry
@@ -532,7 +530,7 @@ theorem mathd_algebra_80
 theorem mathd_numbertheory_457
   (n : ℕ)
   (h₀ : 0 < n)
-  (h₁ : 80325∣(n !)) :
+  (h₁ : 80325∣(Nat.factorial n)) :
   17 ≤ n := by sorry
 
 theorem amc12_2000_p12
@@ -672,7 +670,7 @@ theorem amc12a_2020_p4
 theorem amc12b_2020_p6
   (n : ℕ)
   (h₀ : 9 ≤ n) :
-  ∃ (x : ℕ), (x : ℝ)^2 = (Nat.factorial (n + 2) - Nat.factorial (n + 1)) / n ! := by sorry
+  ∃ (x : ℕ), (x : ℝ)^2 = (Nat.factorial (n + 2) - Nat.factorial (n + 1)) / (Nat.factorial n) := by sorry
 
 theorem mathd_numbertheory_435
   (k : ℕ)
@@ -821,7 +819,7 @@ theorem amc12a_2002_p6
 
 theorem amc12a_2003_p23
   (S : Finset ℕ)
-  (h₀ : ∀ (k : ℕ), k ∈ S ↔ 0 < k ∧ ((k * k) : ℕ) ∣ (∏ i ∈ (Finset.Icc 1 9), i !)) :
+  (h₀ : ∀ (k : ℕ), k ∈ S ↔ 0 < k ∧ ((k * k) : ℕ) ∣ (∏ i ∈ (Finset.Icc 1 9), (Nat.factorial i))) :
   S.card = 672 := by sorry
 
 theorem mathd_algebra_129

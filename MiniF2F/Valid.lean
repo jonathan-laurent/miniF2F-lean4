@@ -7,9 +7,6 @@ Authors: Kunhao Zheng, Stanislas Polu, David Renshaw, OpenAI GPT-f
 -/
 import MiniF2F.Minif2fImport
 
-
-open BigOperators Real Nat Topology
-
 theorem amc12a_2019_p21 (z : ℂ) (h₀ : z = (1 + Complex.I) / Real.sqrt 2) :
   ((∑ k ∈ Finset.Icc 1 12, z ^ k ^ 2) * (∑ k ∈ Finset.Icc 1 12, 1 / z ^ k ^ 2)) = 36 := by
   sorry
@@ -45,7 +42,7 @@ theorem mathd_numbertheory_13 (u v : ℕ) (S : Set ℕ)
   (h₂ : IsLeast (S \ {u}) v) : (u + v : ℚ) / 2 = 64 := by
   sorry
 
-theorem mathd_numbertheory_169 : Nat.gcd 20! 200000 = 40000 := by
+theorem mathd_numbertheory_169 : Nat.gcd (Nat.factorial 20) 200000 = 40000 := by
   apply Eq.refl
 
 theorem amc12a_2009_p9 (a b c : ℝ) (f : ℝ → ℝ) (h₀ : ∀ x, f (x + 3) = 3 * x ^ 2 + 7 * x + 4)
@@ -127,7 +124,7 @@ theorem imo_1965_p1 (x : ℝ) (h₀ : 0 ≤ x) (h₁ : x ≤ 2 * π)
   sorry
 
 theorem mathd_numbertheory_48 (b : ℕ) (h₀ : 0 < b) (h₁ : 3 * b ^ 2 + 2 * b + 1 = 57) : b = 4 := by
-  simp_all only [succ.injEq]
+  simp_all only [Nat.succ.injEq]
   apply le_antisymm
   · nlinarith
   · nlinarith
@@ -185,7 +182,7 @@ theorem mathd_algebra_73 (p q r x : ℂ) (h₀ : (x - p) * (x - q) = (r - p) * (
 
 theorem mathd_numbertheory_109 (v : ℕ → ℕ) (h₀ : ∀ n, v n = 2 * n - 1) :
   (∑ k ∈ Finset.Icc 1 100, v k) % 7 = 4 := by
-  simp_all only [ge_iff_le, gt_iff_lt, lt_one_iff]
+  simp_all only [ge_iff_le, gt_iff_lt, Nat.lt_one_iff]
   apply Eq.refl
 
 theorem algebra_xmysqpymzsqpzmxsqeqxyz_xpypzp6dvdx3y3z3 (x y z : ℤ)
@@ -216,7 +213,7 @@ theorem algebra_amgm_prod1toneq1_sum1tongeqn (a : ℕ → NNReal) (n : ℕ)
   sorry
 
 theorem mathd_algebra_101 (x : ℝ) (h₀ : x ^ 2 - 5 * x - 4 ≤ 10) : x ≥ -2 ∧ x ≤ 7 := by
-  simp_all only [rpow_two, tsub_le_iff_right, ge_iff_le]
+  simp_all only [Real.rpow_two, tsub_le_iff_right, ge_iff_le]
   apply And.intro
   · nlinarith
   · nlinarith
@@ -250,14 +247,14 @@ theorem mathd_algebra_455 (x : ℝ) (h₀ : 2 * (2 * (2 * (2 * x))) = 48) : x = 
   linarith
 
 theorem mathd_numbertheory_45 : Nat.gcd 6432 132 + 11 = 23 := by
-  simp_all only [succ.injEq]
+  simp_all only [Nat.succ.injEq]
   apply Eq.refl
 
 theorem aime_1994_p4 (n : ℕ) (h₀ : 0 < n)
   (h₀ : (∑ k ∈ Finset.Icc 1 n, Int.floor (Real.logb 2 k)) = 1994) : n = 312 := by
   sorry
 
-theorem mathd_numbertheory_739 : 9! % 10 = 0 := by
+theorem mathd_numbertheory_739 : (Nat.factorial 9) % 10 = 0 := by
   apply Eq.refl
 
 theorem mathd_algebra_245 (x : ℝ) (h₀ : x ≠ 0) :
@@ -302,7 +299,7 @@ theorem amc12a_2008_p2 (x : ℝ) (h₀ : x * (1 / 2 + 2 / 3) = 1) : x = 6 / 7 :=
 
 theorem mathd_algebra_35 (p q : ℝ → ℝ) (h₀ : ∀ x, p x = 2 - x ^ 2)
     (h₁ : ∀ x : ℝ, x ≠ 0 → q x = 6 / x) : p (q 2) = -7 := by
-  simp_all only [rpow_two, ne_eq, OfNat.ofNat_ne_zero, not_false_eq_true, div_pow]
+  simp_all only [Real.rpow_two, ne_eq, OfNat.ofNat_ne_zero, not_false_eq_true, div_pow]
   norm_num
 
 theorem algebra_amgm_faxinrrp2msqrt2geq2mxm1div2x :
@@ -429,7 +426,7 @@ theorem amc12a_2011_p18 (x y : ℝ) (h₀ : abs (x + y) + abs (x - y) = 2) :
 
 theorem mathd_algebra_15 (s : ℕ → ℕ → ℕ)
     (h₀ : ∀ a b, 0 < a ∧ 0 < b → s a b = a ^ (b : ℕ) + b ^ (a : ℕ)) : s 2 6 = 100 := by
-  simp_all only [and_imp, zero_lt_two, zero_lt_succ]
+  simp_all only [and_imp, zero_lt_two, Nat.zero_lt_succ]
   apply Eq.refl
 
 theorem mathd_numbertheory_211 :
@@ -475,12 +472,12 @@ theorem algebra_sqineq_2at2pclta2c2p41pc (a c : ℝ) :
   2 * a * (2 + c) ≤ a ^ 2 + c ^ 2 + 4 * (1 + c) := by
   sorry
 
-theorem mathd_numbertheory_43 : IsGreatest { n : ℕ | 15 ^ n ∣ 942! } 233 := by
+theorem mathd_numbertheory_43 : IsGreatest { n : ℕ | 15 ^ n ∣ (Nat.factorial 942) } 233 := by
   sorry
 
 theorem mathd_algebra_214 (a : ℝ) (f : ℝ → ℝ) (h₀ : ∀ x, f x = a * (x - 2) ^ 2 + 3) (h₁ : f 4 = 4) :
   f 6 = 7 := by
-  simp_all only [rpow_two]
+  simp_all only [Real.rpow_two]
   linarith
 
 theorem mathd_algebra_96 (x y z a : ℝ) (h₀ : 0 < x ∧ 0 < y ∧ 0 < z)
@@ -558,7 +555,7 @@ theorem amc12b_2003_p17 (x y : ℝ) (h₀ : 0 < x ∧ 0 < y) (h₁ : Real.log (x
   (h₂ : Real.log (x ^ 2 * y) = 1) : Real.log (x * y) = 3 / 5 := by
   sorry
 
-theorem mathd_algebra_536 : ↑3! * ((2 : ℝ) ^ 3 + Real.sqrt 9) / 2 = (33 : ℝ) := by
+theorem mathd_algebra_536 : ↑(Nat.factorial 3) * ((2 : ℝ) ^ 3 + Real.sqrt 9) / 2 = (33 : ℝ) := by
   sorry
 
 theorem mathd_algebra_22 : Real.logb (5 ^ 2) (5 ^ 4) = 2 := by
@@ -581,7 +578,7 @@ theorem aime_1987_p8 :
   sorry
 
 theorem mathd_numbertheory_136 (n : ℕ) (h₀ : 123 * n + 17 = 39500) : n = 321 := by
-  simp_all only [succ.injEq]
+  simp_all only [Nat.succ.injEq]
   linarith
 
 theorem amc12_2000_p11 (a b : ℝ) (h₀ : a ≠ 0 ∧ b ≠ 0) (h₁ : a * b = a - b) :
@@ -613,7 +610,7 @@ theorem mathd_algebra_149 (f : ℝ → ℝ) (h₀ : ∀ x < -5, f x = x ^ 2 + 5)
 
 theorem mathd_algebra_132 (x : ℝ) (f g : ℝ → ℝ) (h₀ : ∀ x, f x = x + 2) (h₁ : ∀ x, g x = x ^ 2)
   (h₂ : f (g x) = g (f x)) : x = -1 / 2 := by
-  simp_all only [rpow_two]
+  simp_all only [Real.rpow_two]
   linarith
 
 theorem mathd_numbertheory_37 : Nat.lcm 9999 100001 = 90900909 := by
@@ -654,11 +651,11 @@ theorem amc12a_2013_p7 (s : ℕ → ℝ) (h₀ : ∀ n, s (n + 2) = s (n + 1) + 
 theorem mathd_algebra_104 (x : ℝ) (h₀ : 125 / 8 = x / 12) : x = 375 / 2 := by
   linarith
 
-theorem mathd_numbertheory_252 : 7! % 23 = 3 := by
+theorem mathd_numbertheory_252 : (Nat.factorial 7) % 23 = 3 := by
   apply Eq.refl
 
 theorem amc12a_2020_p21 (S : Finset ℕ)
-  (h₀ : ∀ n : ℕ, n ∈ S ↔ 5 ∣ n ∧ Nat.lcm 5! n = 5 * Nat.gcd 10! n) : S.card = 48 := by
+  (h₀ : ∀ n : ℕ, n ∈ S ↔ 5 ∣ n ∧ Nat.lcm (Nat.factorial 5) n = 5 * Nat.gcd (Nat.factorial 10) n) : S.card = 48 := by
   sorry
 
 theorem mathd_algebra_493 (f : ℝ → ℝ) (h₀ : ∀ x, f x = x ^ 2 - 4 * Real.sqrt x + 1) :
@@ -819,7 +816,7 @@ theorem mathd_algebra_509 :
 
 theorem mathd_algebra_159 (b : ℝ) (f : ℝ → ℝ)
   (h₀ : ∀ x, f x = 3 * x ^ 4 - 7 * x ^ 3 + 2 * x ^ 2 - b * x + 1) (h₁ : f 1 = 1) : b = -2 := by
-  simp_all only [rpow_two, one_rpow, mul_one, one_pow, add_left_eq_self]
+  simp_all only [Real.rpow_two, Real.one_rpow, mul_one, one_pow, add_left_eq_self]
   linarith
 
 theorem aime_1997_p11 (x : ℝ)
@@ -871,7 +868,7 @@ theorem imo_1961_p1 (x y z a b : ℝ) (h₀ : 0 < x ∧ 0 < y ∧ 0 < z) (h₁ :
   sorry  -- aesop stucks
 
 theorem mathd_algebra_31 (x : NNReal) (u : ℕ → NNReal) (h₀ : ∀ n, u (n + 1) = NNReal.sqrt (x + u n))
-  (h₁ : Filter.Tendsto u Filter.atTop (𝓝 9)) : 9 = NNReal.sqrt (x + 9) := by
+  (h₁ : Filter.Tendsto u Filter.atTop (nhds 9)) : 9 = NNReal.sqrt (x + 9) := by
   sorry
 
 theorem algebra_manipexpr_apbeq2cceqiacpbceqm2 (a b c : ℂ) (h₀ : a + b = 2 * c)
@@ -909,7 +906,7 @@ theorem imo_1966_p4 (n : ℕ) (x : ℝ) (h₀ : ∀ k : ℕ, 0 < k → ∀ m : �
 
 theorem mathd_algebra_67 (f g : ℝ → ℝ) (h₀ : ∀ x, f x = 5 * x + 3) (h₁ : ∀ x, g x = x ^ 2 - 2) :
     g (f (-1)) = 2 := by
-  simp_all only [rpow_two, mul_neg, mul_one]
+  simp_all only [Real.rpow_two, mul_neg, mul_one]
   norm_num
 
 theorem mathd_numbertheory_326 (n : ℤ) (h₀ : (n - 1) * n * (n + 1) = 720 ) : n + 1 = 10 := by
@@ -939,7 +936,7 @@ theorem imo_1964_p1_1 (n : ℕ) (h₀ : 7 ∣ 2 ^ n - 1) : 3 ∣ n := by
 theorem imo_1990_p3 (n : ℕ) (h₀ : 2 ≤ n) (h₁ : n ^ 2 ∣ 2 ^ n + 1) : n = 3 := by
   sorry
 
-theorem induction_ineq_nsqlefactn (n : ℕ) (h₀ : 4 ≤ n) : n ^ 2 ≤ n ! := by
+theorem induction_ineq_nsqlefactn (n : ℕ) (h₀ : 4 ≤ n) : n ^ 2 ≤ (Nat.factorial n) := by
   sorry
 
 theorem mathd_numbertheory_30 :
@@ -1079,7 +1076,7 @@ theorem imo_1979_p1 (p q : ℕ) (h₀ : 0 < q)
 theorem mathd_algebra_51 (a b : ℝ) (h₀ : 0 < a ∧ 0 < b) (h₁ : a + b = 35) (h₂ : a = 2 / 5 * b) :
     b - a = 15 := by
   subst h₂
-  simp_all only [ofNat_pos, div_pos_iff_of_pos_left, mul_pos_iff_of_pos_left, and_self]
+  simp_all only [Nat.ofNat_pos, div_pos_iff_of_pos_left, mul_pos_iff_of_pos_left, and_self]
   linarith
 
 theorem mathd_algebra_10 : abs ((120 : ℝ) / 100 * 30 - 130 / 100 * 20) = 10 := by
